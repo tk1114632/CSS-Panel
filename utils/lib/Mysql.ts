@@ -33,38 +33,40 @@ db.on('connection', async (connection) => {
 			`CREATE TABLE IF NOT EXISTS \`${process.env.DB_DATABASE}\`.\`sa_admins_groups\` (\`id\` VARCHAR(50) NOT NULL, \`name\` TEXT NOT NULL , \`flags\` TEXT NOT NULL , \`immunity\` varchar(64) NOT NULL DEFAULT '0' ,\`created\` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (\`id\`)) ENGINE = InnoDB;`
 		)
 
-		// Add columns to sa_mutes table if they don't exist
-		try {
+		// Check and add columns to sa_mutes table if they don't exist
+		const [checkMutesColumnsResult] = await connection.query(
+			`SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '${process.env.DB_DATABASE}' AND TABLE_NAME = 'sa_mutes' AND COLUMN_NAME IN ('unmute_reason', 'comment')`
+		)
+		const existingMutesColumns = (checkMutesColumnsResult as any[]).map((row: any) => row.COLUMN_NAME)
+
+		if (!existingMutesColumns.includes('unmute_reason')) {
 			await connection.query(
 				`ALTER TABLE \`${process.env.DB_DATABASE}\`.\`sa_mutes\` ADD COLUMN \`unmute_reason\` TEXT NULL DEFAULT NULL AFTER \`reason\`;`
 			)
-		} catch (err) {
-			// Column might already exist, ignore error
 		}
 
-		try {
+		if (!existingMutesColumns.includes('comment')) {
 			await connection.query(
 				`ALTER TABLE \`${process.env.DB_DATABASE}\`.\`sa_mutes\` ADD COLUMN \`comment\` TEXT NULL DEFAULT NULL AFTER \`unmute_reason\`;`
 			)
-		} catch (err) {
-			// Column might already exist, ignore error
 		}
 
-		// Add columns to sa_bans table if they don't exist
-		try {
+		// Check and add columns to sa_bans table if they don't exist
+		const [checkBansColumnsResult] = await connection.query(
+			`SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '${process.env.DB_DATABASE}' AND TABLE_NAME = 'sa_bans' AND COLUMN_NAME IN ('unban_reason', 'comment')`
+		)
+		const existingBansColumns = (checkBansColumnsResult as any[]).map((row: any) => row.COLUMN_NAME)
+
+		if (!existingBansColumns.includes('unban_reason')) {
 			await connection.query(
 				`ALTER TABLE \`${process.env.DB_DATABASE}\`.\`sa_bans\` ADD COLUMN \`unban_reason\` TEXT NULL DEFAULT NULL AFTER \`reason\`;`
 			)
-		} catch (err) {
-			// Column might already exist, ignore error
 		}
 
-		try {
+		if (!existingBansColumns.includes('comment')) {
 			await connection.query(
 				`ALTER TABLE \`${process.env.DB_DATABASE}\`.\`sa_bans\` ADD COLUMN \`comment\` TEXT NULL DEFAULT NULL AFTER \`unban_reason\`;`
 			)
-		} catch (err) {
-			// Column might already exist, ignore error
 		}
 
 		connection.query(
