@@ -88,21 +88,19 @@ const ServerModal = () => {
 
 			case 'playerName':
 				return (
-					<Link
+					<User
+						as={Link}
 						href={`https://steamcommunity.com/profiles/${player.steam64}`}
 						target='_blank'
+						avatarProps={{ radius: 'lg', src: player.avatar }}
+						name={player.playerName}
+						classNames={{
+							name: 'flex flex-col gap-2',
+						}}
 					>
-						<User
-							avatarProps={{ radius: 'lg', src: player.avatar }}
-							name={player.playerName}
-							classNames={{
-								name: 'flex flex-col gap-2',
-							}}
-						>
-							{player.playerName}
-							<span>{player.admin ? '(Admin)' : ''}</span>
-						</User>
-					</Link>
+						{player.playerName}
+						<span>{player.admin ? '(Admin)' : ''}</span>
+					</User>
 				)
 
 			case 'steam64':

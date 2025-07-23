@@ -87,18 +87,15 @@ const BansTable = ({ type }: { type: TableType }) => {
 		switch (columnKey) {
 			case 'player_name':
 				return (
-					<Link
+					<User
+						as={Link}
 						href={`https://steamcommunity.com/profiles/${item.player_steamid}`}
 						target='_blank'
-						passHref
+						avatarProps={{ radius: 'lg', src: item.player_avatar || '' }}
+						name={item.player_name}
 					>
-						<User
-							avatarProps={{ radius: 'lg', src: item.player_avatar || '' }}
-							name={item.player_name}
-						>
-							{item.player_name?.slice(0, 10)}
-						</User>
-					</Link>
+						{item.player_name?.slice(0, 10)}
+					</User>
 				)
 
 			case 'status':
@@ -152,18 +149,15 @@ const BansTable = ({ type }: { type: TableType }) => {
 							Console
 						</Chip>
 					) : (
-						<Link
+						<User
+							as={Link}
 							href={`https://steamcommunity.com/profiles/${item.admin_steamid}`}
 							target='_blank'
-							passHref
+							avatarProps={{ radius: 'lg', src: item.admin_avatar || '' }}
+							name={item.admin_name}
 						>
-							<User
-								avatarProps={{ radius: 'lg', src: item.admin_avatar || '' }}
-								name={item.admin_name}
-							>
-								{item.admin_name}
-							</User>
-						</Link>
+							{item.admin_name}
+						</User>
 					)
 				) : (
 					<>-</>
