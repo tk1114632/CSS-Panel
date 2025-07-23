@@ -25,9 +25,7 @@ const SoloServer = ({ id, hostname, address }: SA_Server) => {
 			<Card
 				className='border-none bg-content1'
 				shadow='sm'
-				onClick={() => open(`steam://connect/${address}`, '_self')}
 				isBlurred
-				isPressable
 			>
 				<CardBody>
 					<div className='grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center'>
@@ -80,7 +78,7 @@ const SoloServer = ({ id, hostname, address }: SA_Server) => {
 
 							<div className='flex w-full items-center justify-between mt-4'>
 								<Button
-									onClick={() => {
+									onPress={() => {
 										navigator.clipboard.writeText(address)
 										toast.success('Copied to clipboard!')
 									}}
@@ -113,9 +111,7 @@ const SoloServer = ({ id, hostname, address }: SA_Server) => {
 			<Card
 				className='border-none bg-content1'
 				shadow='sm'
-				onClick={() => open(`steam://connect/${address}`, '_self')}
 				isBlurred
-				isPressable
 			>
 				<CardBody>
 					<div className='grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center'>
@@ -164,7 +160,7 @@ const SoloServer = ({ id, hostname, address }: SA_Server) => {
 
 							<div className='flex w-full items-center justify-between mt-4'>
 								<Button
-									onClick={() => {
+									onPress={() => {
 										navigator.clipboard.writeText(address)
 										toast.success('Copied to clipboard!')
 									}}
@@ -215,9 +211,7 @@ const SoloServer = ({ id, hostname, address }: SA_Server) => {
 		<Card
 			className='border-none bg-content1'
 			shadow='sm'
-			onClick={isRconStatus ? handleOpen : handleConnect}
 			isBlurred
-			isPressable
 		>
 			<CardBody>
 				<div className='grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center'>
@@ -276,7 +270,7 @@ const SoloServer = ({ id, hostname, address }: SA_Server) => {
 
 						<div className='flex w-full items-center justify-between mt-4'>
 							<Button
-								onClick={handleCopy}
+								onPress={handleCopy}
 								color='secondary'
 								variant='flat'
 								size='sm'

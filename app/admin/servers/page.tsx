@@ -24,7 +24,7 @@ const ManageServers = () => {
 						size='sm'
 						variant='flat'
 						color='primary'
-						onClick={() => setOpen(true)}
+						onPress={() => setOpen(true)}
 					>
 						<IconPlus />
 						Add new server

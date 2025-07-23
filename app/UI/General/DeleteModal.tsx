@@ -23,7 +23,7 @@ const ConfirmationModal = ({ open, title, text, onAction, onCancel }: Props) => 
 							<Button
 								color='primary'
 								type='submit'
-								onClick={onAction}
+								onPress={onAction}
 							>
 								{title}
 							</Button>

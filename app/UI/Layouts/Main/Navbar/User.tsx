@@ -92,7 +92,7 @@ const User = () => {
 					color='danger'
 					description='Logout from your steam account'
 					startContent={<IconLogout className={cn(iconClasses, 'text-danger')} />}
-					onClick={handleLogout}
+					onPress={handleLogout}
 				>
 					Logout
 				</DropdownItem>

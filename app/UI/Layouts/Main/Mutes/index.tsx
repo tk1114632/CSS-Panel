@@ -344,7 +344,7 @@ const MutesTable = ({ type }: { type: TableType }) => {
 									size='sm'
 									variant='flat'
 									color='primary'
-									onClick={() => setOpen(true)}
+									onPress={() => setOpen(true)}
 								>
 									<IconPlus />
 									New mute

@@ -67,7 +67,7 @@ const ServersTable = () => {
 							size='sm'
 							variant='flat'
 							color='primary'
-							onClick={() => setEdit(item)}
+							onPress={() => setEdit(item)}
 						>
 							<IconEdit size={16} />
 							Edit Server
@@ -76,7 +76,7 @@ const ServersTable = () => {
 							size='sm'
 							variant='flat'
 							color='danger'
-							onClick={() => setDelete(item)}
+							onPress={() => setDelete(item)}
 						>
 							<IconTrash size={16} />
 							Delete Server
@@ -85,7 +85,7 @@ const ServersTable = () => {
 							size='sm'
 							variant='flat'
 							color='default'
-							onClick={() => setRcon(item.id)}
+							onPress={() => setRcon(item.id)}
 						>
 							<IconMessage size={16} />
 							RCON

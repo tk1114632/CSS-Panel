@@ -168,7 +168,7 @@ const AdminModal = () => {
 											key={group.id}
 											id={group.id}
 											color='default'
-											onClick={() => form.setValues({ flags: group.id })}
+											onPress={() => form.setValues({ flags: group.id })}
 										>
 											{group.name} {form.values.flags === group.id && '(Selected)'}
 										</DropdownItem>

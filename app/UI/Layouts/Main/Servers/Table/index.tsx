@@ -85,7 +85,7 @@ const ServersTable = () => {
 				return (
 					<div className='flex flex-row gap-2'>
 						<Button
-							onClick={handleCopy}
+							onPress={handleCopy}
 							color='secondary'
 							variant='flat'
 							size='sm'

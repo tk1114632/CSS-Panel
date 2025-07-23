@@ -35,7 +35,7 @@ const Editor = ({ value, setValue, lang, example, disabled, label }: Props) => {
 			/>
 			{example && (
 				<Button
-					onClick={handlePasteExample}
+					onPress={handlePasteExample}
 					disabled={disabled}
 					variant='flat'
 					color='primary'

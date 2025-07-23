@@ -209,7 +209,7 @@ const AdminsTable = () => {
 							size='sm'
 							variant='flat'
 							color='primary'
-							onClick={() => setEdit(item)}
+							onPress={() => setEdit(item)}
 							isDisabled={isDisabled}
 						>
 							<IconEdit size={16} />
@@ -219,7 +219,7 @@ const AdminsTable = () => {
 							size='sm'
 							variant='flat'
 							color='danger'
-							onClick={() => setDelete(item)}
+							onPress={() => setDelete(item)}
 							isDisabled={isDisabled}
 						>
 							<IconTrash size={16} />

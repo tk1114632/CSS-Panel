@@ -34,12 +34,12 @@ const ManageAdmins = () => {
 					<Card>
 						<CardHeader className='text-2xl font-medium flex flex-row justify-between'>
 							Manage Admins
-							<Button
-								size='sm'
-								variant='flat'
-								color='primary'
-								onClick={() => setOpen(true)}
-							>
+												<Button
+						size='sm'
+						variant='flat'
+						color='primary'
+						onPress={() => setOpen(true)}
+					>
 								<IconPlus />
 								Add new Admin
 							</Button>
@@ -61,7 +61,7 @@ const ManageAdmins = () => {
 								size='sm'
 								variant='flat'
 								color='primary'
-								onClick={() => setGroupOpen(true)}
+								onPress={() => setGroupOpen(true)}
 							>
 								<IconPlus />
 								Add new group

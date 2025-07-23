@@ -74,7 +74,7 @@ const Settings = () => {
 						<Button
 							className='mt-4'
 							color='danger'
-							onClick={() => (data ? setSettings(data) : undefined)}
+							onPress={() => (data ? setSettings(data) : undefined)}
 							isLoading={isLoadingForm || isLoading}
 							fullWidth
 						>
@@ -83,7 +83,7 @@ const Settings = () => {
 						<Button
 							className='mt-4'
 							color='primary'
-							onClick={handleSaveSettings}
+							onPress={handleSaveSettings}
 							isLoading={isLoadingForm || isLoading}
 							fullWidth
 						>

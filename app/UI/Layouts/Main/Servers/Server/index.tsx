@@ -28,9 +28,7 @@ const Server = ({ hostname, address, map, players, maxPlayers, playersPercentage
 		<Card
 			className='border-none bg-content1'
 			shadow='sm'
-			onClick={isRconStatus ? handleOpen : handleConnect}
 			isBlurred
-			isPressable
 		>
 			<CardBody>
 				<div className='grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center'>
@@ -88,7 +86,7 @@ const Server = ({ hostname, address, map, players, maxPlayers, playersPercentage
 
 						<div className='flex w-full items-center justify-between mt-4'>
 							<Button
-								onClick={handleCopy}
+								onPress={handleCopy}
 								color='secondary'
 								variant='flat'
 								size='sm'
