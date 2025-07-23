@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "next dev -p 3010",
 		"build": "next build",
-		"start": "PORT=3010 node build/standalone/server.js",
+		"start": "PORT=3010 next start",
 		"lint": "next lint",
 		"pm2": "pm2 startOrRestart ecosystem.config.js",
 		"update": "git stash push --include-untracked && git stash drop",
