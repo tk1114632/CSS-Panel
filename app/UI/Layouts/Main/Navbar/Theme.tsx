@@ -30,7 +30,7 @@ const ThemeSwitch = () => {
 
 	return (
 		<Button
-			onClick={() =>
+			onPress={() =>
 				setTheme(
 					theme === `dark-${selectedTheme}-theme`
 						? `light-${selectedTheme}-theme`

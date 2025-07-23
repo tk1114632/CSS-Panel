@@ -101,7 +101,7 @@ const User = () => {
 	) : (
 		<Button
 			color='primary'
-			onClick={handleLogin}
+			onPress={handleLogin}
 		>
 			Login
 		</Button>
