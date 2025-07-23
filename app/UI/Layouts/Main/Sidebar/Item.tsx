@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Route } from './Routes'
 import { usePathname } from 'next/navigation'
-import { cn } from '@nextui-org/system'
+import { clsx as cn } from 'clsx'
 
 const Item = ({ name, icon: Icon, path }: Route) => {
 	const pathname = usePathname()

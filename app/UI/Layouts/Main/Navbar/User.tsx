@@ -3,7 +3,7 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from '@nextui-o
 import { User as NextUIUser } from '@nextui-org/user'
 import { IconLogout } from '@tabler/icons-react'
 import { Button } from '@nextui-org/button'
-import { cn } from '@nextui-org/system'
+import { clsx as cn } from 'clsx'
 import useAuth, { handleLogin, handleLogout } from '@/utils/hooks/useAuth'
 import { Tooltip } from '@nextui-org/tooltip'
 

@@ -1,5 +1,5 @@
 import { Switch } from '@nextui-org/switch'
-import { cn } from '@nextui-org/system'
+import { clsx as cn } from 'clsx'
 
 const AdvancedSwitch = ({ label, description, value, onChange, disabled }: AdvancedSwitchProps) => {
 	return (
