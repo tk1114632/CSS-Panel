@@ -33,13 +33,39 @@ db.on('connection', async (connection) => {
 			`CREATE TABLE IF NOT EXISTS \`${process.env.DB_DATABASE}\`.\`sa_admins_groups\` (\`id\` VARCHAR(50) NOT NULL, \`name\` TEXT NOT NULL , \`flags\` TEXT NOT NULL , \`immunity\` varchar(64) NOT NULL DEFAULT '0' ,\`created\` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (\`id\`)) ENGINE = InnoDB;`
 		)
 
-		connection.query(
-			`ALTER TABLE \`${process.env.DB_DATABASE}\`.\`sa_mutes\` ADD COLUMN IF NOT EXISTS \`unmute_reason\` TEXT NULL DEFAULT NULL AFTER \`reason\`, ADD COLUMN IF NOT EXISTS \`comment\` TEXT NULL DEFAULT NULL AFTER \`unmute_reason\`;`
-		)
+		// Add columns to sa_mutes table if they don't exist
+		try {
+			await connection.query(
+				`ALTER TABLE \`${process.env.DB_DATABASE}\`.\`sa_mutes\` ADD COLUMN \`unmute_reason\` TEXT NULL DEFAULT NULL AFTER \`reason\`;`
+			)
+		} catch (err) {
+			// Column might already exist, ignore error
+		}
 
-		connection.query(
-			`ALTER TABLE \`${process.env.DB_DATABASE}\`.\`sa_bans\` ADD COLUMN IF NOT EXISTS \`unban_reason\` TEXT NULL DEFAULT NULL AFTER \`reason\`, ADD COLUMN IF NOT EXISTS \`comment\` TEXT NULL DEFAULT NULL AFTER \`unban_reason\`;`
-		)
+		try {
+			await connection.query(
+				`ALTER TABLE \`${process.env.DB_DATABASE}\`.\`sa_mutes\` ADD COLUMN \`comment\` TEXT NULL DEFAULT NULL AFTER \`unmute_reason\`;`
+			)
+		} catch (err) {
+			// Column might already exist, ignore error
+		}
+
+		// Add columns to sa_bans table if they don't exist
+		try {
+			await connection.query(
+				`ALTER TABLE \`${process.env.DB_DATABASE}\`.\`sa_bans\` ADD COLUMN \`unban_reason\` TEXT NULL DEFAULT NULL AFTER \`reason\`;`
+			)
+		} catch (err) {
+			// Column might already exist, ignore error
+		}
+
+		try {
+			await connection.query(
+				`ALTER TABLE \`${process.env.DB_DATABASE}\`.\`sa_bans\` ADD COLUMN \`comment\` TEXT NULL DEFAULT NULL AFTER \`unban_reason\`;`
+			)
+		} catch (err) {
+			// Column might already exist, ignore error
+		}
 
 		connection.query(
 			`ALTER TABLE \`sa_mutes\` CHANGE \`type\` \`type\` ENUM('GAG','MUTE','SILENCE','') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'GAG';`

@@ -93,19 +93,16 @@ const ServersTable = () => {
 							<IconCopy size={16} />
 							{address}
 						</Button>
-						<Link
+						<Button
+							as={Link}
 							href={`steam://connect/${address}`}
-							passHref
+							color='primary'
+							variant='solid'
+							size='sm'
 						>
-							<Button
-								color='primary'
-								variant='solid'
-								size='sm'
-							>
-								<IconPlayerPlay size={16} />
-								Connect
-							</Button>
-						</Link>
+							<IconPlayerPlay size={16} />
+							Connect
+						</Button>
 					</div>
 				)
 

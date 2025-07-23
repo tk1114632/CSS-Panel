@@ -221,12 +221,13 @@ const ServerModal = () => {
 								>
 									Close
 								</Button>
-								<Link
+								<Button 
+									as={Link}
 									href={`steam://connect/${server.address}`}
-									passHref
+									color='primary'
 								>
-									<Button color='primary'>Connect</Button>
-								</Link>
+									Connect
+								</Button>
 							</ModalFooter>
 						</>
 					)

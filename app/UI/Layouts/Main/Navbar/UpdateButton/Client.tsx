@@ -33,19 +33,16 @@ const UpdateButtonClient = () => {
 								<ModalHeader>Update CSS-Panel</ModalHeader>
 								<ModalBody>There is a new update available for CSS-Panel!</ModalBody>
 								<ModalFooter>
-									<Link
+									<Button
+										as={Link}
 										href='https://csspanel.dev/docs/updating'
 										target='_blank'
-										passHref
+										variant='solid'
+										color='primary'
+										onClick={onClose}
 									>
-										<Button
-											variant='solid'
-											color='primary'
-											onClick={onClose}
-										>
-											Update
-										</Button>
-									</Link>
+										Update
+									</Button>
 								</ModalFooter>
 							</>
 						)}
